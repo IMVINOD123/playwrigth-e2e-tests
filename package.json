@@ -6,7 +6,12 @@
   "author": "",
   "type": "commonjs",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "demo": "playwright test tests/demo/mytest.test.ts",
+    "demo:edge": "playwright test tests/demo/mytest.test.ts --project=edge",
+    "login:chromium": "playwright test functional/login.test.ts  --project=chromium",
+    "HTMLreportrun": "playwright show-report"
+  },
   "devDependencies": {
     "@playwright/test": "^1.58.1",
     "@types/node": "^25.2.0"

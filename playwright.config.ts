@@ -34,6 +34,8 @@ export default defineConfig({
     errors — like expired, self-signed, or 
     untrusted certificates — so your tests don’t fail when hitting HTTPS sites with bad certs. */
     ignoreHTTPSErrors:true, 
+    navigationTimeout:30_000,
+    headless: false,
   },
 
   /* Configure projects for major browsers */
@@ -52,6 +54,10 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+    {
+    name: 'Edge',
+    use: { browserName: 'chromium', channel: 'msedge' },
+  },
 
     /* Test against mobile viewports. */
     // {
