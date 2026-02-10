@@ -11,7 +11,7 @@ test("should validated title of web page", async ({ page }) => {
     await expect(page.locator("//h1")).toHaveText("CURA Healthcare Service");
 });
 
-test.only("Test cases used for location  concept", async ({ page }) => {
+test("Test cases used for location  concept", async ({ page }) => {
 
     await page.goto("https://katalon-demo-cura.herokuapp.com/");
     let _MakeAppointment=page.getByRole("link", { name: "Make Appointment" });

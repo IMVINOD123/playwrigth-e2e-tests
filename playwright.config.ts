@@ -36,6 +36,7 @@ export default defineConfig({
     ignoreHTTPSErrors:true, 
     navigationTimeout:30_000,
     headless: true,
+    //forbidOnly: !!process.env.CI,
   },
 
   /* Configure projects for major browsers */
