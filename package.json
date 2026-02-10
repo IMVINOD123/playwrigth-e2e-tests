@@ -7,13 +7,16 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "demo": "playwright test tests/demo/mytest.test.ts --project=chromium",
-    "demo:edge": "playwright test tests/demo/mytest.test.ts --project=edge",
-    "login:chromium": "playwright test functional/login.test.ts  --project=chromium",
+    "demo": "playwright test tests/demo/mytest.test.ts --headed",
+    "make-appoint": "playwright test tests/functional/Make.app.test.ts --project=chromium --headed",
+    "ele-Handle": "playwright test tests/demo/element.Handling.Make.app.test.ts --project=chromium --headed",
     "HTMLreportrun": "playwright show-report"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.1",
     "@types/node": "^25.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4"
   }
 }

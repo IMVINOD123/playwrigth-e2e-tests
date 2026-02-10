@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from "dotenv";
+import path from "path";
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 /**
  * Read environment variables from file.
@@ -36,8 +39,9 @@ export default defineConfig({
     ignoreHTTPSErrors:true, 
     navigationTimeout:30_000,
     headless: true,
-    //forbidOnly: !!process.env.CI,
+    
   },
+
 
   /* Configure projects for major browsers */
   projects: [
@@ -46,19 +50,19 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-    name: 'Edge',
-    use: { browserName: 'chromium', channel: 'msedge' },
-  },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
+  //   {
+  //   name: 'Edge',
+  //   use: { browserName: 'chromium', channel: 'msedge' },
+  // },
 
     /* Test against mobile viewports. */
     // {
