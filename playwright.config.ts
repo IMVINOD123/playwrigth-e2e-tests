@@ -35,7 +35,7 @@ export default defineConfig({
     untrusted certificates — so your tests don’t fail when hitting HTTPS sites with bad certs. */
     ignoreHTTPSErrors:true, 
     navigationTimeout:30_000,
-    headless: false,
+    headless: true,
   },
 
   /* Configure projects for major browsers */
