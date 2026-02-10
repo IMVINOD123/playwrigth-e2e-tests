@@ -14,6 +14,6 @@ test("test",async({page})=>{
     await page.getByRole("button",{name:"Login"}).click();
 
     //step 4 Assert the text
-    await expect(page.locator(`//*[@id="appointment"]/div/div/div/h2`)).toContainText("Make Appointment");
+    await expect( page.getByText('Make Appointment').nth(1)).toBeVisible();
 })
 
