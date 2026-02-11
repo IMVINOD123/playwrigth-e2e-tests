@@ -9,6 +9,11 @@
   "scripts": {
     "demo": "playwright test tests/demo/mytest.test.ts --headed",
     "make-appoint": "playwright test tests/functional/Make.app.test.ts --project=chromium --headed",
+    "Debuge-appoint": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --headed",
+    "Debuge-appoint:ui": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --ui --headed",
+    "Debuge-appoint:trace": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --trace on",
+    "Debuge-appoint:cli": "PWDEBUG=1 npx playwright test tests/demo/Debug.Demo.test.ts --project=chromium",
+    "inventroy-Demo": "playwright test tests/functional/inventory.test.ts --project=chromium --headed",
     "ele-Handle": "playwright test tests/demo/element.Handling.Make.app.test.ts --project=chromium --headed",
     "HTMLreportrun": "playwright show-report"
   },

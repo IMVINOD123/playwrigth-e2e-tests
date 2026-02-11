@@ -2,6 +2,15 @@
 
 import { test, expect } from '@playwright/test';
 
+/*
+    List of Debug options:
+    1 Running in Debug mode keeping break point
+    2 "Debuge-appoint:ui": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --ui --headed",
+    3 "Debuge-appoint:trace": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --trace on",
+    4 "Debuge-appoint:cli": "PWDEBUG=1 npx playwright test tests/demo/Debug.Demo.test.ts --project=chromium",
+
+*/
+
 test.describe("Make Appointment login setup", () => {
 
     test.beforeEach("User login with proper creds", async ({ page }) => {
@@ -11,42 +20,14 @@ test.describe("Make Appointment login setup", () => {
         await expect(page).toHaveTitle("CURA Healthcare Service");
 
         await expect(page.locator("//h1")).toHaveText("CURA Healthcare Service");
-        /*
-           Elements Handling below
-           1 click()
-           2 press
-           3 doubleclick
-           4 right click
-           5 mouse hover
-           6 [Option] time out if slow
+        
    
-           // await page.getByRole("link", { name: "Make Appointment" }).click();
-          // await page.getByRole("link", { name: "Make Appointment" }).press("Enter");
-          // await page.getByRole("link", { name: "Make Appointment" }).dblclick();
-          // await page.getByRole("link", { name: "Make Appointment" }).click({button:'right'});
-          // await page.getByRole("link", { name: "Make Appointment" }).hover();   
-   
-        */
+        
         await page.getByRole("link", { name: "Make Appointment" }).click();
-        // await page.getByRole("link", { name: "Make Appointment" }).press("Enter");
-        // await page.getByRole("link", { name: "Make Appointment" }).dblclick();
-        // await page.getByRole("link", { name: "Make Appointment" }).click({button:'right'});
-        // await page.getByRole("link", { name: "Make Appointment" }).hover();
+   
         await expect(page.getByText("Please login to make")).toBeVisible();
 
-        /** Text Boxes 
-         1 clear and click before filling
-         2 fill
-         3 pressSquencetially [Slow Typing]
-        */
-
-        /*Clear
-           await page.getByLabel("Username").clear(); 
-           
-       */
-        /*pressSequentially
-        await page.getByLabel("Username").pressSequentially("John Doe" ,{delay:400});
-                */
+       
         await page.getByLabel("Username").fill("John Doe");
         await page.getByLabel("Password").fill("ThisIsNotAPassword");
         await page.getByRole("button", { name: "Login" }).click();
@@ -57,35 +38,7 @@ test.describe("Make Appointment login setup", () => {
 
     test('Test should make appointments with no default value', async ({ page }) => {
 
-        /**
-         * -------------------Dropdown---------------------
         
-        1. Assest Default value
-                // await expect(page.getByLabel("Facility")).toHaveValue("Tokyo CURA Healthcare Center")
-        2. Select by : lable,index
-                        //await page.getByLabel("Facility").selectOption("Hongkong CURA Healthcare Center")
-                        //await page.getByLabel("Facility").selectOption({label:"Seoul CURA Healthcare Center"})
-                       // await page.getByLabel("Facility").selectOption({ index: 2 })
-
-
-        3. Assert the count
-                         let mydropdownElements = page.getByLabel("Facility").locator("option")
-                                                  await expect(mydropdownElements).toHaveCount(3);
-        4. Get all dropdown  
-                     let mydropdownValue = await page.getByLabel("Facility").all()
-        let listofOptions = []
-        for (let value of mydropdownValue) {
-            let elementText = await value.textContent()
-            if (elementText) {
-                listofOptions.push(elementText)
-            }
-        }
-        console.log(`>>> The list of Options Text Elements ${listofOptions}`);
-              
-        */
-      
-
-
       
         await page.getByLabel("Facility").selectOption({ index: 2 })
 
@@ -102,18 +55,12 @@ test.describe("Make Appointment login setup", () => {
             }
         }
         console.log(`>>> The list of Options Text Elements ${listofOptions}`);
-        /**
-         * -----------------Check Boxes--------------
-         * 1 Assert default option
-         * 2 check/uncheck
-         * ----------------Radio button---------------
-         * 1 radio button -->allow to select only one
-         * 2 check box --allow for multi-entry
-         */
+       
         //check box
         await page.getByRole('checkbox', { name: 'Apply for hospital readmission' }).check();
         //radio
         await expect(page.getByText(" Medicare")).toBeChecked();
+        await page.pause()
         await page.getByRole('radio', { name: 'Medicaid' }).check();
         /** Negative secnario elements not to be selected after selection on above radio button */
         await expect(page.getByText("Medicare")).not.toBeChecked();
