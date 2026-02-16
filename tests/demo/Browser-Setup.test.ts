@@ -14,13 +14,24 @@ test.describe("Loging Functionality", { annotation: { type: "Stroy", description
     await expect(page.getByText("Please login to make")).toBeVisible();
 
   })
-  test("sunccessful login", { tag: "@smoke" }, async ({ page }) => {
+  test.only("sunccessful login", { tag: "@smoke" }, async ({ page }) => {
+
+
+    /**
+     * 1 Just locater Elment Lazy
+     * 2 invalid locator on action method
+     * 3 valid locator but invalid action
+     * 4 invalid locator  on expect method
+     * 
+     */
+
+    // auto waiting
 
     await page.getByLabel("Username").fill("John Doe");
     await page.getByLabel("Password").fill("ThisIsNotAPassword");
-    await page.getByRole("button", { name: "Login" }).click();
+    await page.getByRole("button", { name: "Login" }).click({ timeout: 10_000 });
 
-    await expect(page.locator("h2")).toContainText("Make Appointment");
+    await expect(page.locator("h2")).toContainText("Make Appointment", { timeout: 10_000 });
   });
 
 

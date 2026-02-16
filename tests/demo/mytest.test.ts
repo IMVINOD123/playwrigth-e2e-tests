@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test"
+import { json } from "stream/consumers";
 
 test("should validated title of web page", async ({ page }) => {
 
@@ -11,8 +12,9 @@ test("should validated title of web page", async ({ page }) => {
     await expect(page.locator("//h1")).toHaveText("CURA Healthcare Service");
 });
 
-test("Test cases used for location  concept", async ({ page }) => {
+test.only("Test cases used for location  concept", async ({ page },testinfo) => {
 
+    console.log(`>>>>I am from mytest${JSON.stringify(testinfo.config)}`);
     await page.goto("https://katalon-demo-cura.herokuapp.com/");
     let _MakeAppointment=page.getByRole("link", { name: "Make Appointment" });
     console.log(`The Type of _MakeAppointment is :${typeof(_MakeAppointment)} and Value of it:\n

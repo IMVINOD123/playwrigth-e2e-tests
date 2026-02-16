@@ -7,21 +7,32 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "clean:report": "del /s /q  allure-results\\*.*",
     "demo": "playwright test tests/demo/mytest.test.ts --headed",
+    "screen-shot": "npm run clean:report && playwright test tests/functional/screenshort-Video.test.ts.test.ts --project=chromium --headed",
     "make-appoint": "playwright test tests/functional/Make.app.test.ts --project=chromium --headed",
     "Debuge-appoint": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --headed",
     "Debuge-appoint:ui": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --ui --headed",
     "Debuge-appoint:trace": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --trace on",
     "Debuge-appoint:cli": "PWDEBUG=1 npx playwright test tests/demo/Debug.Demo.test.ts --project=chromium",
-    "inventroy-Demo": "playwright test tests/functional/inventory.test.ts --project=chromium --headed",
     "ele-Handle": "playwright test tests/demo/element.Handling.Make.app.test.ts --project=chromium --headed",
-    "HTMLreportrun": "playwright show-report"
+    "HTMLreportrun": "playwright show-report",
+    "inventory-Demo": "npm run clean:report && playwright test tests/functional/inventory.test.ts --project=chromium --headed",
+    "AnnotationWithSkip": "npm run clean:report && playwright test tests/functional/annotationDemoAndSkip.test.ts  --headed",
+    "Demo-Smoke-Tags": "npm run clean:report && playwright test --grep=@smoke  --headed",
+    "Demo-Regression-Tags": "set DEBUG=pw:api && npm run clean:report && playwright test --grep=@Regression  --headed",
+    "pw-add-cap": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demopw.Add.Capp.test.ts --project=chromium --headed",
+    "browser-Maximize": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demo/Browser-Setup.test.ts --project=chromium --headed"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.1",
-    "@types/node": "^25.2.0"
+    "@types/node": "^25.2.0",
+    "allure-playwright": "^3.4.5"
   },
   "dependencies": {
-    "dotenv": "^17.2.4"
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.4",
+    "rimraf": "^6.1.2"
   }
 }
