@@ -11,6 +11,7 @@
     "demo": "playwright test tests/demo/mytest.test.ts --headed",
     "screen-shot": "npm run clean:report && playwright test tests/functional/screenshort-Video.test.ts.test.ts --project=chromium --headed",
     "make-appoint": "playwright test tests/functional/Make.app.test.ts --project=chromium --headed",
+    "make-APT-ON-Emulator": "playwright test tests/functional/EmulatorDevice.test.ts --headed",
     "Debuge-appoint": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --headed",
     "Debuge-appoint:ui": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --ui --headed",
     "Debuge-appoint:trace": "playwright test tests/demo/Debug.Demo.test.ts --project=chromium --trace on",
@@ -22,17 +23,19 @@
     "Demo-Smoke-Tags": "npm run clean:report && playwright test --grep=@smoke  --headed",
     "Demo-Regression-Tags": "set DEBUG=pw:api && npm run clean:report && playwright test --grep=@Regression  --headed",
     "pw-add-cap": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demopw.Add.Capp.test.ts --project=chromium --headed",
-    "browser-Maximize": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demo/Browser-Setup.test.ts --project=chromium --headed"
+    "browser-Maximize": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demo/Browser-Setup.test.ts --project=chromium --headed",
+    "Demo-Hooks": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demo/Demo-Hooks.test.ts --project=chromium --headed",
+    "Demo-global_Remove_report_file": "playwright test tests/demo/Make.app.test.ts --project=chromium"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.1",
     "@types/node": "^25.2.0",
-    "allure-playwright": "^3.4.5"
+    "allure-playwright": "^3.4.5",
+    "dotenv": "^17.3.1"
   },
   "dependencies": {
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",
-    "dotenv": "^17.2.4",
     "rimraf": "^6.1.2"
   }
 }

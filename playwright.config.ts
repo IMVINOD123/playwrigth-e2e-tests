@@ -1,17 +1,20 @@
 import { defineConfig, devices } from '@playwright/test';
+
+// The below 3 Line read the Environment file
 import dotenv from "dotenv";
 import path from "path";
-
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   //forbidOnly: !!process.env.CI,
-   forbidOnly: false,
+  forbidOnly: false,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   globalTimeout: 3 * 60 * 60 * 1000,
+  globalSetup: require.resolve('./tests/helpers/global-setup.ts'),
+  globalTeardown: require.resolve('./tests/helpers/global.teardown.ts'),
   reporter: [
     ['html', { open: 'never' }],
     ['allure-playwright', {
@@ -43,15 +46,24 @@ export default defineConfig({
     headless: true,
     screenshot: 'only-on-failure'
   },
-  projects: [
+   projects: [
     {
       name: 'chromium',
       use: {
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized']
-        }
-      }
-    }
-  ]
+        ...devices['Desktop Chrome'],
+      },
+    },
+    // {
+    //   name: 'Mobile Safari',
+    //   use: {
+    //     ...devices['iPhone 13'],
+    //   },
+    // },
+    // {
+    //   name: 'Galaxy A55',
+    //   use: {
+    //     ...devices['Galaxy A55'],
+    //   },
+    // },
+  ],
 });

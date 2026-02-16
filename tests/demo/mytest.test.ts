@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test"
+import { test, expect ,devices} from "@playwright/test"
 import { json } from "stream/consumers";
 
 test("should validated title of web page", async ({ page }) => {
@@ -12,7 +12,7 @@ test("should validated title of web page", async ({ page }) => {
     await expect(page.locator("//h1")).toHaveText("CURA Healthcare Service");
 });
 
-test.only("Test cases used for location  concept", async ({ page },testinfo) => {
+test("Test cases used for location  concept", async ({ page },testinfo) => {
 
     console.log(`>>>>I am from mytest${JSON.stringify(testinfo.config)}`);
     await page.goto("https://katalon-demo-cura.herokuapp.com/");
@@ -22,4 +22,11 @@ test.only("Test cases used for location  concept", async ({ page },testinfo) => 
     await _MakeAppointment.click();
     //await expect(page.getByText("Make Appointment")).toBeVisible();
     await expect(page.locator("//h1")).toHaveText("CURA Healthcare Service");
+})
+
+test.only("Test cases ", async ({ page }) => {
+
+   
+    console.log(`The Browser supported by Playwrigth ${Object.keys(devices)}`)
+    
 })
