@@ -24,14 +24,14 @@ test.describe("Make Appointment login setup", () => {
         await page.getByLabel("Password").fill("ThisIsNotAPassword");
         await page.getByRole("button", { name: "Login" }).click();
 
-        let fullpagescreenshot = await page.screenshot({ fullPage: true })
-        let allfullpagescreenshot = await page.screenshot({ path: "screen1.png" })
-        await testinfo.attach("attached screenshot",
-            {
-                body: fullpagescreenshot,
-                contentType: "image/png",
+        // let fullpagescreenshot = await page.screenshot({ fullPage: true })
+        // let allfullpagescreenshot = await page.screenshot({ path: "screen1.png" })
+        // await testinfo.attach("attached screenshot",
+        //     {
+        //         body: fullpagescreenshot,
+        //         contentType: "image/png",
 
-            });
+        //     });
 
 
         await expect(page.getByText('Make Appointment').nth(1)).toBeVisible();

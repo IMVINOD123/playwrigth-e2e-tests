@@ -20,4 +20,7 @@ export default async function globalSetup(config: FullConfig) {
 
     console.log(`[INFO]:Completed Deleting process`);
 
+    // set up the login cookies gloabal variable 
+
+    process.env.LONGIN_COOKIES=undefined
 }

@@ -36,6 +36,17 @@ test.describe("Loging Functionality", { annotation: { type: "Stroy", description
     await expect(page.locator('#login')).toContainText("Login failed! Please ensure the username and password are valid.");
   });
 
+  test("Paralllizam run --1", { tag: "@demo" }, async ({ page }) => {
+
+    console.log("I am from Parallel exection -----1")
+    
+  });
+   test("Paralllizam run --2", { tag: "@demo" }, async ({ page }) => {
+
+    console.log("I am from Parallel exection -----2")
+    
+  });
+
 })
 
 

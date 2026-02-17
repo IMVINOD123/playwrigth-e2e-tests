@@ -9,6 +9,10 @@
   "scripts": {
     "clean:report": "del /s /q  allure-results\\*.*",
     "demo": "playwright test tests/demo/mytest.test.ts --headed",
+    "demo-paralles": "playwright test --grep=@demo",
+    "demo-ConstantData": "playwright test --grep=@constantData",
+    "demo-paramTestData": "playwright test tests/demo/paramaterData.test.ts --headed",
+    "demo-CookiesSetUp-GlobalData": "playwright test tests/demo/CookiesSetup.test.ts --headed",
     "screen-shot": "npm run clean:report && playwright test tests/functional/screenshort-Video.test.ts.test.ts --project=chromium --headed",
     "make-appoint": "playwright test tests/functional/Make.app.test.ts --project=chromium --headed",
     "make-APT-ON-Emulator": "playwright test tests/functional/EmulatorDevice.test.ts --headed",

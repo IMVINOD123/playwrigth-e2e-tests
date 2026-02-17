@@ -61,6 +61,41 @@ test.describe("Make Appointment login setup", { annotation: { type: "Story", des
             await page.getByRole('link', { name: 'Go to Homepage' }).click();
             await expect(page.getByRole('link', { name: 'Make Appoint' })).toBeVisible();
         });
+
+
+         test('Parallizam Test', {
+        annotation: { type: "Bug", description: "Open Bug-123 not run in Firfox" },
+        tag: "@demo"    },
+        async ({ page, browserName }) => {
+
+            test.skip(browserName === "firefox", "Opend bug-1223");
+            //dropdown
+            await page.getByRole('heading', { name: 'Make Appointment' }).click();
+            //check box
+            await page.getByRole('checkbox', { name: 'Apply for hospital readmission' }).check();
+            //radio
+            await page.getByRole('radio', { name: 'Medicaid' }).check();
+            //Date fields
+            await page.getByRole('textbox', { name: 'Visit Date (Required)' }).click();
+            await page.getByRole('textbox', { name: 'Visit Date (Required)' }).fill('05/10/2026');
+            await page.getByRole('textbox', { name: 'Visit Date (Required)' }).press('Enter');
+            await page.getByRole('textbox', { name: 'Comment' }).click();
+            await page.getByRole('textbox', { name: 'Comment' }).fill('this is multiline comments');
+            //button Appointment
+            await page.getByRole('button', { name: 'Book Appointment' }).click();
+            await expect(page.getByRole('heading', { name: 'Appointment Confirmation' })).toBeVisible();
+            await page.getByText('Please be informed that your').click();
+            await page.getByRole('link', { name: 'Go to Homepage' }).click();
+            await expect(page.getByRole('link', { name: 'Make Appoint' })).toBeVisible();
+        });
+
+  test('Parallizam Test demo 2 ', {
+        annotation: { type: "Bug", description: "Open Bug-123 not run in Firfox" },
+        tag: "@demo"    },
+        async ({ page, browserName }) => {
+            console.log("Parallel run demo --3");
+           
+        });
 })
 
 
