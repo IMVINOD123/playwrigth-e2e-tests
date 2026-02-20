@@ -2,7 +2,12 @@
 import { test, expect } from '@playwright/test';
 import TestData from '../../data/test-data';
 
+
+
+console.log(`...>>>Stated Fetching Data From  TestData.makeAppointmentTestData()`)
 const makeAppdata=TestData.makeAppointmentTestData();
+
+/// Read the data from test-Data.ts file into {appData.testId} from makeAppData one by one in appData loop
 for(const appData of makeAppdata)
 {
 test.describe("Make Appointment login setup", () => {
@@ -26,6 +31,7 @@ test.describe("Make Appointment login setup", () => {
 
     })
 
+    
     test(`${appData.testid}Test should make appointments with no default value`, async ({ page }) => {
 
         //dropdown
@@ -49,6 +55,7 @@ test.describe("Make Appointment login setup", () => {
         await page.getByRole('link', { name: 'Go to Homepage' }).click();
         await expect(page.getByRole('link', { name: 'Make Appointment' })).toBeVisible();
     });
+    
 })
 }
 

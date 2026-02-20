@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
-export default defineConfig({
+export const baseConfig = defineConfig({
   testDir: './tests',
   fullyParallel: false,
   //forbidOnly: !!process.env.CI,
@@ -46,7 +46,7 @@ export default defineConfig({
     headless: true,
     screenshot: 'only-on-failure'
   },
-   projects: [
+  projects: [
     {
       name: 'chromium',
       use: {

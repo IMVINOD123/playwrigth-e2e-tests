@@ -4,9 +4,12 @@ import { test, expect } from '@playwright/test';
 
 test.describe("Make Appointment login setup", () => {
 
-    test.beforeEach("User login with proper creds", async ({ page }) => {
+    test.beforeEach("User login with proper creds", async ({ page },testInfo) => {
 
-        await page.goto("https://katalon-demo-cura.herokuapp.com/");
+        const envConfig=testInfo.project.use as any      
+         /// await page.goto("https://katalon-demo-cura.herokuapp.com/");
+
+        await page.goto(envConfig.appURL);///Passes the data from test.Playwright.config.ts file
 
         await expect(page).toHaveTitle("CURA Healthcare Service");
 
@@ -15,8 +18,8 @@ test.describe("Make Appointment login setup", () => {
         await page.getByRole("link", { name: "Make Appointment" }).click();
         await expect(page.getByText("Please login to make")).toBeVisible();
 
-        await page.getByLabel("Username").fill("John Doe");
-        await page.getByLabel("Password").fill("ThisIsNotAPassword");
+        await page.getByLabel("Username").fill(process.env.TEST_USER_NAME!);
+        await page.getByLabel("Password").fill(process.env.TEST_PASSWORD!);
         await page.getByRole("button", { name: "Login" }).click();
 
         await expect(page.getByText('Make Appointment').nth(1)).toBeVisible();

@@ -8,10 +8,14 @@
   "main": "index.js",
   "scripts": {
     "clean:report": "del /s /q  allure-results\\*.*",
+    "e2e-NopComm-HomePage":"playwright test  --config=config/test.playwright.config.ts tests/e2e/nopcommerce.e2e.test.ts --project=chromium --headed",
+    "Dev:make-appoint": "playwright test  --config=config/dev.playwright.config.ts tests/functional/Make.app.test.ts --project=chromium --headed",
+    "test:make-appoint": "playwright test  --config=config/test.playwright.config.ts tests/functional/Make.app.test.ts --project=chromium --headed",
     "demo": "playwright test tests/demo/mytest.test.ts --headed",
     "demo-paralles": "playwright test --grep=@demo",
     "demo-ConstantData": "playwright test --grep=@constantData",
     "demo-paramTestData": "playwright test tests/demo/paramaterData.test.ts --headed",
+    "csv-As-param-TestData": "playwright test --config=config/test.playwright.config.ts tests/functional/csv-make-apt.test.ts --headed",
     "demo-CookiesSetUp-GlobalData": "playwright test tests/demo/CookiesSetup.test.ts --headed",
     "screen-shot": "npm run clean:report && playwright test tests/functional/screenshort-Video.test.ts.test.ts --project=chromium --headed",
     "make-appoint": "playwright test tests/functional/Make.app.test.ts --project=chromium --headed",
@@ -35,11 +39,18 @@
     "@playwright/test": "^1.58.1",
     "@types/node": "^25.2.0",
     "allure-playwright": "^3.4.5",
-    "dotenv": "^17.3.1"
+    "chalk": "^5.6.2",
+    "csv-parse": "^6.1.0",
+    "dotenv": "^17.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",
+    "csv": "^6.4.1",
+    "D": "^1.0.0",
+    "parse": "^8.1.0",
     "rimraf": "^6.1.2"
   }
 }

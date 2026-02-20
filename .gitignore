@@ -8,6 +8,7 @@ node_modules/
 /playwright/.auth/
 .env
 /logs/
+/debug
 /allure-results/
 /test-examples/
 examples.*
