@@ -3,7 +3,7 @@ import { log } from "../helpers/logger.js";
 import path from 'path'
 import filehelper from '../helpers/csv.data.helper.js'
 import MakeAppoitment from '../page-objects/make.appointment.js'
-import screeshothelper from '../helpers/screenshot.helper.test.js'
+import screeshothelper from '../helpers/screenshot.helper.js'
 
   const csvFilePath=path.resolve(`${process.cwd()}/data/Functional/make-aptment-test-data.csv`)
     const csvDataArr= filehelper.readCSV(csvFilePath)

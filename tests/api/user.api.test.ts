@@ -2,7 +2,7 @@
 import { test, expect, request } from '@playwright/test'
 import constants from '../../data/constant.json';
 import testData from '../../data/test-data';
-import fileHelper from '../helpers/file.helper.test';
+import fileHelper from '../helpers/file.helper';
 const Logger = require('../helpers/logger.js');
 
 

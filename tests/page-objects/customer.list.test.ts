@@ -1,6 +1,6 @@
 import BasePage from "./base.page.js";
 import { expect, type Page } from "@playwright/test";
-import takescreenshot from "../helpers/screenshot.helper.test.js"
+import takescreenshot from "../helpers/screenshot.helper.js"
 const Logger = require('../helpers/logger.js');
 const log = new Logger();
 

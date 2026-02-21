@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import constants from "../../data/constant.json";
 import HomePage from "../page-objects/nopcommerce.home.page.js";
 import CustList from "../page-objects/customer.list.test.js"
-import filereader from "../helpers/file.helper.test"
+import filereader from "../helpers/file.helper"
 
 const Logger = require('../helpers/logger.js');
 const log = new Logger();

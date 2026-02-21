@@ -2,7 +2,7 @@ import BasePage from "./base.page.js";
 import { expect, type Page } from "@playwright/test";
 import path from 'path'
 import filehelper from '../helpers/csv.data.helper';
-import takescreenshot from '../helpers/screenshot.helper.test.js'
+import takescreenshot from '../helpers/screenshot.helper.js'
 
 const Logger = require('../helpers/logger.js');
 
