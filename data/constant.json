@@ -6,7 +6,7 @@
     },
     "Req_End_Point":
     {
-        "Get_User_List":"posts",
+        "Get_User_List":"posts/1",
         "ALL_User_List":"posts?userId=9",
         "Post_User":"posts/",
         "put_req":"posts/1",

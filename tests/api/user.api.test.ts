@@ -15,7 +15,7 @@ test.describe("API Test cases", () => {
 
         baseUrl = testInfo.project.use as any;
     })
-    test.only("First API call should get user list", async ({ request }, testInfo) => {
+    test("First API call should get user list", async ({ request }, testInfo) => {
 
         const title = "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
 
