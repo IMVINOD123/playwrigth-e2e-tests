@@ -1,4 +1,5 @@
 import BasePage from "./base.page.js";
+import constants from '../../data/constant.json';
 import { expect, type Page } from "@playwright/test";
 
 const Logger = require('../helpers/logger.js');
@@ -14,11 +15,24 @@ class HomePage extends BasePage {
     get usernameInputBox() {
         return this.page.getByRole("textbox", { name: "Email:" });
     }
+    get usernameInputBoxFirstName() {
+        return this.page.getByRole('textbox', { name: 'First name' });
+    }
+    get usernameInputBoxLastName() {
+        return this.page.getByRole('textbox', { name: 'Last name' });
+    }
     get passwordInputBox() {
         return this.page.getByRole("textbox", { name: "Password:" });
     }
     get loginBtn() {
         return this.page.getByRole("button", { name: "Log in" });
+    }
+    get searchBtnBy() {
+        return this.page.getByRole('button', { name: 'Search' });
+    }
+
+    pressArrowDownBtn() {
+        this.page.getByRole('button', { name: 'Search' }).press('ArrowDown');
     }
 
     /* Page Actions */
@@ -36,6 +50,7 @@ class HomePage extends BasePage {
             throw err;
         }
     }
+
 }
 
 export default HomePage;

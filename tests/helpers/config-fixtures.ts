@@ -3,13 +3,15 @@ import { test as base } from '@playwright/test';
 export type EnvConfig = {
   envName: string;
   appURL: string;
-   dbConfig: {
+  apiBaseUrl: string
+  dbConfig: {
     serverName: string;
     dbName: string;
     connectionStr: string;
-    
+
+
   };
-   nopCommerceURL: string;
+  nopCommerceURL: string;
 };
 
 export const test = base.extend<EnvConfig>({
@@ -17,4 +19,5 @@ export const test = base.extend<EnvConfig>({
   appURL: ['<provideURL>', { option: true }],
   dbConfig: [{ serverName: '', dbName: '', connectionStr: '' }, { option: true }],
   nopCommerceURL: ['<provideURL>', { option: true }],
+  apiBaseUrl: ['<provideURL', { option: true }],
 });

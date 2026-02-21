@@ -3,5 +3,27 @@
         "success":200,
         "validationError":703
 
+    },
+    "Req_End_Point":
+    {
+        "Get_User_List":"posts",
+        "ALL_User_List":"posts?userId=9",
+        "Post_User":"posts/",
+        "put_req":"posts/1",
+        "patch_req":"posts/1"
+    },
+    "nopCommerce":{
+        "Customer_FirstName":"vinod",
+        "Customer_LastName":"biradar"
+    },
+    "customerListAPI":{
+        "NopCom_USER_Searc":"/Admin/Customer/List"
+
+    },
+    "JsonFilePath":{
+        "filepath":"data/API-Response/list-of-Users.json"
     }
+
+    
+    
 }

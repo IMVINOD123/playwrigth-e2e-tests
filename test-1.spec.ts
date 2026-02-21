@@ -1,10 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto('https://admin-demo.nopcommerce.com/');
-  await page.getByRole('textbox', { name: 'Email:' }).fill('admin@yourstore.com');
-   await page.getByRole('textbox', { name: 'Password:' }).fill('admin');
+  await page.goto('https://admin-demo.nopcommerce.com/login?returnUrl=%2Fadmin%2F');
   await page.getByRole('button', { name: 'Log in' }).click();
-
-  await expect(page).toHaveURL("https://admin-demo.nopcommerce.com/admin/")
+  await page.getByRole('link', { name: 'Customers' }).click();
+  await page.getByRole('link', { name: 'Customers' }).nth(1).click();
 });

@@ -13,11 +13,13 @@ export default defineConfig<EnvConfig>({
         envName: "test",
         appURL: "https://katalon-demo-cura.herokuapp.com/",
         nopCommerceURL: "https://admin-demo.nopcommerce.com/",
+        apiBaseUrl:"https://jsonplaceholder.typicode.com/",
         dbConfig: {
             serverName: '',
             dbName: '',
             connectionStr: ''
-        }
+        },
+
     }
 });
 
