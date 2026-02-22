@@ -1,33 +1,48 @@
-import { test, expect } from "@playwright/test";
-import { log } from "../helpers/logger.js";
-import path from 'path'
-import filehelper from '../helpers/csv.data.helper.js'
-import MakeAppoitment from '../page-objects/make.appointment.js'
-import screeshothelper from '../helpers/screenshot.helper.js'
+name: Playwright Tests
 
-  const csvFilePath=path.resolve(`${process.cwd()}/data/Functional/make-aptment-test-data.csv`)
-    const csvDataArr= filehelper.readCSV(csvFilePath)
-for(const csvValue of  csvDataArr )
-{
-test.describe("Make Appointments", () => {
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main, master ]
 
-    test(`${csvValue.testid}"Make Appointments"`, async ({ page }, testInfo) => {
-
-        //await screeshothelper.takeFullPageScreenshot(page,"Make Appointments")
-        const makeAppoitment = new MakeAppoitment(page)
-
-        //calling the Env Config
-        const envConfig = testInfo.project.use as any;
-        //creating object of Homepage
-        await makeAppoitment.loginMakeAppoimnetPortal(envConfig.appURL, process.env.TEST_USER_NAME,
-            process.env.TEST_PASSWORD)
-        
-        await makeAppoitment.makeAppointment(csvValue.facility,csvValue.hcp,csvValue.visiteDate)
-
-    });
-   
-
-})
-}
-
-
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    env:
+      RUNNER: ${{ secrets.RUNNER }}
+      TEST_USER_NAME: ${{ secrets.TEST_USER_NAME }}
+      TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: |
+          npx playwright test --reporter=line,allure-playwright
+        env:
+          ALLURE_RESULTS_DIR: ./allure-results
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report@v1
+        with:
+          allure_results: ./allure-results
+          allure_history: ./allure-history
+          allure_report_path: ./allure-report
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: allure-report
+          path: ./allure-report/
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
