@@ -2,7 +2,7 @@
 import { test, expect, request } from '@playwright/test'
 import constants from '../../data/constant.json';
 import testData from '../../data/test-data';
-import fileHelper from '../helpers/file.helper';
+import fileHelper from '../helpers/file.helper.js'
 const Logger = require('../helpers/logger.js');
 
 
@@ -15,7 +15,7 @@ test.describe("API Test cases", () => {
 
         baseUrl = testInfo.project.use as any;
     })
-    test("First API call should get user list", async ({ request }, testInfo) => {
+    test.only("First API call should get user list", async ({ request }, testInfo) => {
 
         const title = "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
 

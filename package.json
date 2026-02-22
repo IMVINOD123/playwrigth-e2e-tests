@@ -9,7 +9,7 @@
   "scripts": {
     "clean:report": "del /s /q  allure-results\\*.*",
     "api-e2e-testing":"playwright test  --config=config/test.playwright.config.ts tests/api/user.api.test.ts",
-    "e2e:make-appoint": "playwright test --config=config/test.playwright.config.ts tests/e2e/make.appointment.e2e.test.ts --project=chromium --headed",
+    "e2e:make-appoint": "playwright test --config=config/test.playwright.config.ts tests/e2e/make.appointment.e2e.test.ts --project=chromium",
     "e2e-NopComm-HomePage":"playwright test  --config=config/test.playwright.config.ts tests/e2e/nopcommerce.e2e.test.ts --project=chromium --headed",
     "Dev:make-appoint": "playwright test  --config=config/dev.playwright.config.ts tests/functional/Make.app.test.ts --project=chromium --headed",
     "test:make-appoint": "playwright test  --config=config/test.playwright.config.ts tests/functional/Make.app.test.ts --project=chromium --headed",
@@ -35,7 +35,8 @@
     "pw-add-cap": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demopw.Add.Capp.test.ts --project=chromium --headed",
     "browser-Maximize": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demo/Browser-Setup.test.ts --project=chromium --headed",
     "Demo-Hooks": "set DEBUG=pw:api && npm run clean:report && playwright test tests/demo/Demo-Hooks.test.ts --project=chromium --headed",
-    "Demo-global_Remove_report_file": "playwright test tests/demo/Make.app.test.ts --project=chromium"
+    "Demo-global_Remove_report_file": "playwright test tests/demo/Make.app.test.ts --project=chromium",
+    "multi-window": "playwright test tests/functional/multi.window.spec.ts --project=chromium --headed"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.1",
