@@ -38,7 +38,7 @@ pipeline {
           } else {
             bat '''
               npm ci
-              npx playwright install 
+              npx playwright install --with-deps chromium
             '''
           }
         }
