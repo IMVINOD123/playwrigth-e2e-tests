@@ -14,6 +14,7 @@ export default defineConfig<EnvConfig>({
         appURL: "https://katalon-demo-cura.herokuapp.com/",
         nopCommerceURL: "https://admin-demo.nopcommerce.com/",
         apiBaseUrl:"https://jsonplaceholder.typicode.com/",
+        apiBaseUrl1:"https://api.escuelajs.co/",
         dbConfig: {
             serverName: '',
             dbName: '',

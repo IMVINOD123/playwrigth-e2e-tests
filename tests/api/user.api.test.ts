@@ -5,11 +5,9 @@ import testData from '../../data/test-data';
 import fileHelper from '../helpers/file.helper.js'
 const Logger = require('../helpers/logger.js');
 
-
-
 const logger = new Logger();
 
-test.describe("API Test cases", () => {
+test.describe("API Test cases",{tag:"@smoke"}, () => {
     let baseUrl
     test.beforeEach("API Call", async ({ request }, testInfo) => {
 

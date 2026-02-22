@@ -10,7 +10,8 @@
         "ALL_User_List":"posts?userId=9",
         "Post_User":"posts/",
         "put_req":"posts/1",
-        "patch_req":"posts/1"
+        "patch_req":"posts/1",
+        "esclogin":"api/v1/auth/login"
     },
     "nopCommerce":{
         "Customer_FirstName":"vinod",
@@ -22,6 +23,15 @@
     },
     "JsonFilePath":{
         "filepath":"data/API-Response/list-of-Users.json"
+    },
+    "requestBody":{
+        "email": "john@mail.com",
+        "password": "changeme",
+    "profileDetails":"api/v1/auth/profile"
+    },
+    "apiJsonPath":
+    {
+        "path":"data/API-Response/escuelajs.json"
     }
 
     

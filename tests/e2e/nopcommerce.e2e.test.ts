@@ -24,6 +24,7 @@ test("NopCommerce Home Page Login", async ({ page, request }, testInfo) => {
         process.env.NOCOMM_TEST_PASSWORD)
     await customerList.gotoCustomerList(`${ennConfig.nopCommerceURL}${constants.customerListAPI.NopCom_USER_Searc}`)
     await customerList.gotoCustomerLabel()
+    
     for(let user of jsonData)
     {
     let customerSearchList = await customerList.searchNameAndConfirm(user.first_name, user. last_name)
