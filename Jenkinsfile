@@ -9,58 +9,42 @@ pipeline {
   }
   environment {
     TEST_CREDS = credentials('PW-E2E-Test-User')
-    IS_UNIX    = isUnix()
+    // ✅ Force browsers to install in workspace instead of system profile
+    PLAYWRIGHT_BROWSERS_PATH = "${WORKSPACE}\\pw-browsers"
   }
   stages {
     stage('Clean Workspace') {
       steps {
-        script {
-          if (isUnix()) {
-            sh 'rm -rf allure-results allure-report node_modules'
-          } else {
-            bat '''
-              if exist allure-results rmdir /s /q allure-results
-              if exist allure-report  rmdir /s /q allure-report
-              if exist node_modules   rmdir /s /q node_modules
-            '''
-          }
-        }
+        bat '''
+          if exist allure-results rmdir /s /q allure-results
+          if exist allure-report  rmdir /s /q allure-report
+          if exist node_modules   rmdir /s /q node_modules
+          if exist pw-browsers    rmdir /s /q pw-browsers
+        '''
       }
     }
     stage('Build') {
       steps {
-        script {
-          if (isUnix()) {
-            sh '''
-              npm ci
-              npx playwright install --with-deps
-            '''
-          } else {
-            bat '''
-              npm ci
-              npx playwright install --with-deps chromium
-            '''
-          }
-        }
+        bat '''
+          npm ci
+        '''
+      }
+    }
+    stage('Install Browsers') {
+      steps {
+        bat '''
+          echo Installing Playwright browsers to: %PLAYWRIGHT_BROWSERS_PATH%
+          npx playwright install --with-deps chromium
+        '''
       }
     }
     stage('Test') {
       steps {
-        script {
-          if (isUnix()) {
-            sh '''
-              export TEST_USER_NAME="$TEST_CREDS_USR"
-              export TEST_PASSWORD="$TEST_CREDS_PSW"
-              npm run e2e:make-appoint
-            '''
-          } else {
-            bat '''
-              set TEST_USER_NAME=%TEST_CREDS_USR%
-              set TEST_PASSWORD=%TEST_CREDS_PSW%
-              npm run e2e:make-appoint
-            '''
-          }
-        }
+        bat '''
+          set TEST_USER_NAME=%TEST_CREDS_USR%
+          set TEST_PASSWORD=%TEST_CREDS_PSW%
+          npm run e2e:make-appoint
+        '''
       }
     }
   }
