@@ -1,0 +1,5 @@
+INFO: Login to :https://katalon-demo-cura.herokuapp.com/ with John Doe
+INFO: Navigating to the path: https://katalon-demo-cura.herokuapp.com/
+INFO: Tokyo CURA Healthcare Center:User selected Options from Base Class reusable method
+INFO: Medicare:User selected HPC
+INFO: 10/10/2024:User selected Date

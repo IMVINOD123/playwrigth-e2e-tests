@@ -1,0 +1,1 @@
+[{"values":["TEST"],"name":"name"},{"values":["DEMOPLAYWRIGHT"],"name":"appName"},{"values":["Release 1.1"],"name":"Release"},{"values":["Chrome"],"name":"Browser"},{"values":["linux"],"name":"OS"},{"values":["runner"],"name":"Executor"},{"values":["Playwright Test"],"name":"ExecutorType"}]

@@ -1,0 +1,5 @@
+INFO: Login to :https://katalon-demo-cura.herokuapp.com/ with John Doe
+INFO: Navigating to the path: https://katalon-demo-cura.herokuapp.com/
+INFO: Hongkong CURA Healthcare Center:User selected Options from Base Class reusable method
+INFO: Medicaid:User selected HPC
+INFO: 07/11/2012:User selected Date
